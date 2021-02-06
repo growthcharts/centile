@@ -8,4 +8,3 @@
 #'@importFrom tidyr       pivot_longer pivot_wider
 NULL
 
-utils::globalVariables(c("."))
