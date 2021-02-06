@@ -1,6 +1,7 @@
-# yzy 0.3.1
+# yzy 0.4.0
 
-* Weed out imports
+* Adds `pkg` argument to `z()` and `y()`
+* Weeds out imports
 
 # yzy 0.3.0
 
