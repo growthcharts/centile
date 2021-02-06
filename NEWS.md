@@ -1,3 +1,7 @@
+# yzy 0.3.1
+
+* Weed out imports
+
 # yzy 0.3.0
 
 * Extends functionality of `load_reference()` to loaded packages

@@ -1,6 +1,6 @@
 Package: yzy
 Title: Converts Measurements and Z-scores for Conditional References
-Version: 0.3.0
+Version: 0.3.1
 Authors@R: 
     person(given = "Stef",
            family = "van Buuren",
@@ -19,8 +19,7 @@ Imports:
     gamlss.dist,
     readr,
     rlang,
-    stats,
-    tidyr
+    stats
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
