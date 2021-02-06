@@ -6,6 +6,7 @@
 #' The default is `"all"`.
 #' @param pkg The package containing the reference. The package must be loaded
 #' and attached. The default `pkg = "yzy"` searches in the home package.
+#' @param verbose For more verbose output, set to `TRUE`.
 #' @return The return value depends on the `element` parameter.
 #'
 #' `element` | Return value
@@ -20,17 +21,18 @@
 #' @export
 load_reference <- function(refcode = NULL,
                            element = c("all", "table", "index", "study"),
-                           pkg = "yzy") {
+                           pkg = "yzy",
+                           verbose = FALSE) {
   if (is.null(refcode)) {
     return(NULL)
   }
   if (!pkg %in% loadedNamespaces()) {
-    warning("Package ", pkg, " not loaded.")
+    if (verbose) warning("Package ", pkg, " not loaded.")
     return(NULL)
   }
   ref <- get0(refcode[[1L]], envir = asNamespace(pkg))
   if (is.null(ref)) {
-    warning("Reference ", refcode[[1L]], " not found in package ", pkg, ".")
+    if (verbose) warning("Reference ", refcode[[1L]], " not found in package ", pkg, ".")
     return(NULL)
   }
 

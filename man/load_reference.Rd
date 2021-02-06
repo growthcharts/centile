@@ -7,7 +7,8 @@
 load_reference(
   refcode = NULL,
   element = c("all", "table", "index", "study"),
-  pkg = "yzy"
+  pkg = "yzy",
+  verbose = FALSE
 )
 }
 \arguments{
@@ -18,6 +19,8 @@ The default is \code{"all"}.}
 
 \item{pkg}{The package containing the reference. The package must be loaded
 and attached. The default \code{pkg = "yzy"} searches in the home package.}
+
+\item{verbose}{For more verbose output, set to \code{TRUE}.}
 }
 \value{
 The return value depends on the \code{element} parameter.\tabular{ll}{

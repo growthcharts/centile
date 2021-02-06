@@ -1,6 +1,6 @@
 # yzy 0.4.0
 
-* Adds `pkg` argument to `z()` and `y()`
+* Adds `pkg` and `verbose` arguments to `z()`, `y()` and `load_reference()`
 * Weeds out imports
 
 # yzy 0.3.0

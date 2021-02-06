@@ -17,6 +17,7 @@
 #' points to a reference.
 #' @param pkg The package containing the reference. The package must be loaded
 #' and attached. The default `pkg = "yzy"` searches in the home package.
+#' @param verbose Set to `TRUE` to turn on warnings
 #' @param dec A scalar value indicating the number of decimals used to round the
 #' value. The default is 3 decimals.
 #' @param tail_adjust Logical. If \code{TRUE} the procedure applies the WHO
@@ -32,7 +33,8 @@
 #'              rep(c("who_2011_wgt_male_", "who_2011_wgt_female_"), 2))
 #' z(y, x, refcode)
 #' @export
-z <- function(y, x, refcode, pkg = "yzy", dec = 3L, tail_adjust = FALSE, ...) {
+z <- function(y, x, refcode, pkg = "yzy", verbose = FALSE,
+              dec = 3L, tail_adjust = FALSE, ...) {
   if (length(y) != length(x) || length(y) != length(refcode)) {
     message("z(): Non-conformable arguments")
     return(rep(NA_real_, length(y)))
@@ -48,6 +50,7 @@ z <- function(y, x, refcode, pkg = "yzy", dec = 3L, tail_adjust = FALSE, ...) {
       x = .data$x,
       refcode = first(.data$refcode),
       pkg = pkg,
+      verbose = verbose,
       tail_adjust = tail_adjust
     )) %>%
     ungroup() %>%
@@ -55,8 +58,8 @@ z <- function(y, x, refcode, pkg = "yzy", dec = 3L, tail_adjust = FALSE, ...) {
     round(digits = dec)
 }
 
-z_grp <- function(y, x, refcode, pkg, tail_adjust = FALSE) {
-  r <- load_reference(refcode = refcode, pkg = pkg)
+z_grp <- function(y, x, refcode, pkg, verbose, tail_adjust = FALSE) {
+  r <- load_reference(refcode = refcode, pkg = pkg, verbose = verbose)
 
   # do not process in absence of study attribute
   study <- attr(r, "study")

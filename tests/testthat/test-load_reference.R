@@ -16,9 +16,9 @@ test_that("finds internal reference: index", {
 })
 
 test_that("cannot find invalid refcode", {
-  expect_warning(load_reference("junk"))
+  expect_warning(load_reference("junk", verbose = TRUE))
 })
 
 test_that("cannot find invalid pkg", {
-  expect_warning(load_reference("junk", pkg = "notloaded"))
+  expect_warning(load_reference("junk", pkg = "notloaded", verbose = TRUE))
 })

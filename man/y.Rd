@@ -4,7 +4,16 @@
 \alias{y}
 \title{Convert Z-scores into measurements}
 \usage{
-y(z, x, refcode, pkg = "yzy", dec = 3L, tail_adjust = FALSE, ...)
+y(
+  z,
+  x,
+  refcode,
+  pkg = "yzy",
+  verbose = FALSE,
+  dec = 3L,
+  tail_adjust = FALSE,
+  ...
+)
 }
 \arguments{
 \item{z}{A numerical vector with Z-scores.}
@@ -17,6 +26,8 @@ points to a reference.}
 
 \item{pkg}{The package containing the reference. The package must be loaded
 and attached. The default \code{pkg = "yzy"} searches in the home package.}
+
+\item{verbose}{Set to \code{TRUE} to turn on warnings}
 
 \item{dec}{A scalar value indicating the number of decimals used to round the
 value. The default is 3 decimals.}
