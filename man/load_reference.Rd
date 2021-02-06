@@ -6,26 +6,26 @@
 \usage{
 load_reference(
   refcode = NULL,
-  element = c("table", "index", "study", "all"),
-  con = NULL
+  element = c("all", "table", "index", "study"),
+  pkg = "yzy"
 )
 }
 \arguments{
 \item{refcode}{String, code of a reference. Only the first element is loaded.}
 
-\item{element}{String, either \code{"table"}, \code{"index"}, \code{"study"} or
-\code{"all"}.  The default is \code{"table"}.}
+\item{element}{Keyword, either \code{"all"}, \code{"table"}, \code{"index"} or \code{"study"}.
+The default is \code{"all"}.}
 
-\item{con}{A database connection. The default \code{con = NULL} reads the
-data from the internal data. Database access is currently not implemented.}
+\item{pkg}{The package containing the reference. The package must be loaded
+and attached. The default \code{pkg = "yzy"} searches in the home package.}
 }
 \value{
 The return value depends on the \code{element} parameter.\tabular{ll}{
    \code{element} \tab Return value \cr
+   \code{"all"} \tab All stored information \cr
    \code{"table"} \tab A \code{tibble} with reference values \cr
    \code{"index"} \tab Numeric vector with index values \cr
    \code{"study"} \tab Named character vector with study data \cr
-   \code{"all"} \tab All stored information \cr
 }
 }
 \description{
