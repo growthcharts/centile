@@ -4,7 +4,7 @@
 \alias{y}
 \title{Convert Z-scores into measurements}
 \usage{
-y(z, x, refcode, dec = 3L, tail_adjust = FALSE, ...)
+y(z, x, refcode, pkg = "yzy", dec = 3L, tail_adjust = FALSE, ...)
 }
 \arguments{
 \item{z}{A numerical vector with Z-scores.}
@@ -14,6 +14,9 @@ decimal age or height) at which conversion is desired.}
 
 \item{refcode}{A character vector with \code{length(z)} elements, each of which
 points to a reference.}
+
+\item{pkg}{The package containing the reference. The package must be loaded
+and attached. The default \code{pkg = "yzy"} searches in the home package.}
 
 \item{dec}{A scalar value indicating the number of decimals used to round the
 value. The default is 3 decimals.}

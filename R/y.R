@@ -16,6 +16,8 @@
 #' decimal age or height) at which conversion is desired.
 #' @param refcode A character vector with `length(z)` elements, each of which
 #' points to a reference.
+#' @param pkg The package containing the reference. The package must be loaded
+#' and attached. The default `pkg = "yzy"` searches in the home package.
 #' @param dec A scalar value indicating the number of decimals used to round the
 #' value. The default is 3 decimals.
 #' @param tail_adjust Logical. If \code{TRUE} the procedure applies the WHO
@@ -35,7 +37,7 @@
 #' )
 #' y <- y(z, x, refcode)
 #' @export
-y <- function(z, x, refcode, dec = 3L, tail_adjust = FALSE, ...) {
+y <- function(z, x, refcode, pkg = "yzy", dec = 3L, tail_adjust = FALSE, ...) {
   if (length(z) != length(x) || length(z) != length(refcode)) {
     message("y(): Non-conformable arguments")
     return(rep(NA_real_, length(z)))
@@ -50,6 +52,7 @@ y <- function(z, x, refcode, dec = 3L, tail_adjust = FALSE, ...) {
       z = .data$z,
       x = .data$x,
       refcode = first(.data$refcode),
+      pkg = pkg,
       tail_adjust = tail_adjust
     )) %>%
     ungroup() %>%
@@ -57,8 +60,8 @@ y <- function(z, x, refcode, dec = 3L, tail_adjust = FALSE, ...) {
     round(digits = dec)
 }
 
-y_grp <- function(z, x, refcode, tail_adjust = FALSE) {
-  r <- load_reference(refcode, "all")
+y_grp <- function(z, x, refcode, pkg, tail_adjust = FALSE) {
+  r <- load_reference(refcode = refcode, pkg = pkg)
 
   # do not process in absence of study attribute
   study <- attr(r, "study")
