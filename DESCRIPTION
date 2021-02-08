@@ -1,5 +1,5 @@
 Package: yzy
-Title: Converts Measurements and Z-scores for Conditional References
+Title: Converting Measurements and Z-scores with Conditional References
 Version: 0.4.0
 Authors@R: 
     person(given = "Stef",
