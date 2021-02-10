@@ -12,11 +12,12 @@
 #'
 #' @param y A numerical vector with measurements`.
 #' @param x A vector containing `length(y)` values of the numerical covariate (typically
-#' decimal age or height) at which conversion is desired.
+#' decimal age or height) at which conversion is desired. A scalar `x` will be
+#' expanded to `length(y)`.
 #' @param refcode A character vector with `length(y)` elements, each of which
-#' points to a reference.
-#' @param pkg The package containing the reference. The package must be loaded
-#' and attached. The default `pkg = "yzy"` searches in the home package.
+#' points to a reference. A scalar `refcode` will be expanded to `length(y)`.
+#' @param pkg The package containing the references. The package must be loaded.
+#' The default `pkg = "yzy"` searches in the home package.
 #' @param verbose Set to `TRUE` to turn on warnings
 #' @param dec A scalar value indicating the number of decimals used to round the
 #' value. The default is 3 decimals.
@@ -36,8 +37,12 @@
 #' @export
 z <- function(y, x, refcode, pkg = "yzy", verbose = FALSE,
               dec = 3L, rule = 1L, tail_adjust = FALSE, ...) {
-  if (length(y) != length(x) || length(y) != length(refcode)) {
-    message("z(): Non-conformable arguments")
+  if (length(y) != length(x) && length(x) > 1L) {
+    message("z(): Non-conformable arguments y and x")
+    return(rep(NA_real_, length(y)))
+  }
+  if (length(y) != length(refcode) && length(refcode) > 1L) {
+    message("z(): Non-conformable arguments y and refcode")
     return(rep(NA_real_, length(y)))
   }
   if (!length(y)) {

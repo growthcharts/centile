@@ -12,19 +12,7 @@
 #' Functions \code{z()} and \code{y()} functions are the inverse of each other.
 #'
 #' @param z A numerical vector with Z-scores.
-#' @param x A vector containing `length(z)` values of the numerical covariate (typically
-#' decimal age or height) at which conversion is desired.
-#' @param refcode A character vector with `length(z)` elements, each of which
-#' points to a reference.
-#' @param pkg The package containing the reference. The package must be loaded
-#' and attached. The default `pkg = "yzy"` searches in the home package.
-#' @param verbose Set to `TRUE` to turn on warnings
-#' @param dec A scalar value indicating the number of decimals used to round the
-#' value. The default is 3 decimals.
-#' @param tail_adjust Logical. If \code{TRUE} the procedure applies the WHO
-#' method for tail adjustment under the LMS distribution. Not implemented
-#' in `z()`.
-#' @param \dots Not used.
+#' @inheritParams z
 #' @inheritParams stats::approx
 #' @return A vector with `length(z)` elements containing the measurements.
 #' @author Stef van Buuren, 2021
@@ -41,8 +29,12 @@
 #' @export
 y <- function(z, x, refcode, pkg = "yzy", verbose = FALSE,
               dec = 3L, rule = 1L, tail_adjust = FALSE, ...) {
-  if (length(z) != length(x) || length(z) != length(refcode)) {
-    message("y(): Non-conformable arguments")
+  if (length(z) != length(x) && length(x) > 1L) {
+    message("y(): Non-conformable arguments z and x")
+    return(rep(NA_real_, length(z)))
+  }
+  if (length(z) != length(refcode) && length(refcode) > 1L) {
+    message("y(): Non-conformable arguments z and refcode")
     return(rep(NA_real_, length(z)))
   }
   if (!length(z)) {

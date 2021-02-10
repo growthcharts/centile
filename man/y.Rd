@@ -19,14 +19,15 @@ y(
 \arguments{
 \item{z}{A numerical vector with Z-scores.}
 
-\item{x}{A vector containing \code{length(z)} values of the numerical covariate (typically
-decimal age or height) at which conversion is desired.}
+\item{x}{A vector containing \code{length(y)} values of the numerical covariate (typically
+decimal age or height) at which conversion is desired. A scalar \code{x} will be
+expanded to \code{length(y)}.}
 
-\item{refcode}{A character vector with \code{length(z)} elements, each of which
-points to a reference.}
+\item{refcode}{A character vector with \code{length(y)} elements, each of which
+points to a reference. A scalar \code{refcode} will be expanded to \code{length(y)}.}
 
-\item{pkg}{The package containing the reference. The package must be loaded
-and attached. The default \code{pkg = "yzy"} searches in the home package.}
+\item{pkg}{The package containing the references. The package must be loaded.
+The default \code{pkg = "yzy"} searches in the home package.}
 
 \item{verbose}{Set to \code{TRUE} to turn on warnings}
 
@@ -41,10 +42,10 @@ value. The default is 3 decimals.}
     extrapolation should differ.}
 
 \item{tail_adjust}{Logical. If \code{TRUE} the procedure applies the WHO
-method for tail adjustment under the LMS distribution. Not implemented
-in \code{z()}.}
+method for tail adjustment under the LMS distribution.
+The default is \code{FALSE}.}
 
-\item{\dots}{Not used.}
+\item{...}{Not used.}
 }
 \value{
 A vector with \code{length(z)} elements containing the measurements.
