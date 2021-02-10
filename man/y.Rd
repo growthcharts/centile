@@ -11,6 +11,7 @@ y(
   pkg = "yzy",
   verbose = FALSE,
   dec = 3L,
+  rule = 1L,
   tail_adjust = FALSE,
   ...
 )
@@ -31,6 +32,13 @@ and attached. The default \code{pkg = "yzy"} searches in the home package.}
 
 \item{dec}{A scalar value indicating the number of decimals used to round the
 value. The default is 3 decimals.}
+
+\item{rule}{an integer (of length 1 or 2) describing how interpolation
+    is to take place outside the interval [\code{min(x)}, \code{max(x)}].
+    If \code{rule} is \code{1} then \code{NA}s are returned for such
+    points and if it is \code{2}, the value at the closest data extreme
+    is used.  Use, e.g., \code{rule = 2:1}, if the left and right side
+    extrapolation should differ.}
 
 \item{tail_adjust}{Logical. If \code{TRUE} the procedure applies the WHO
 method for tail adjustment under the LMS distribution. Not implemented

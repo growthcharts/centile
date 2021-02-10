@@ -25,6 +25,7 @@
 #' method for tail adjustment under the LMS distribution. Not implemented
 #' in `z()`.
 #' @param \dots Not used.
+#' @inheritParams stats::approx
 #' @return A vector with `length(z)` elements containing the measurements.
 #' @author Stef van Buuren, 2021
 #' @examples
@@ -39,7 +40,7 @@
 #' y <- y(z, x, refcode)
 #' @export
 y <- function(z, x, refcode, pkg = "yzy", verbose = FALSE,
-              dec = 3L, tail_adjust = FALSE, ...) {
+              dec = 3L, rule = 1L, tail_adjust = FALSE, ...) {
   if (length(z) != length(x) || length(z) != length(refcode)) {
     message("y(): Non-conformable arguments")
     return(rep(NA_real_, length(z)))
@@ -56,6 +57,7 @@ y <- function(z, x, refcode, pkg = "yzy", verbose = FALSE,
       refcode = first(.data$refcode),
       verbose = verbose,
       pkg = pkg,
+      rule = rule,
       tail_adjust = tail_adjust
     )) %>%
     ungroup() %>%
@@ -63,7 +65,7 @@ y <- function(z, x, refcode, pkg = "yzy", verbose = FALSE,
     round(digits = dec)
 }
 
-y_grp <- function(z, x, refcode, pkg, verbose, tail_adjust = FALSE) {
+y_grp <- function(z, x, refcode, pkg, verbose, rule, tail_adjust = FALSE) {
   r <- load_reference(refcode = refcode, pkg = pkg, verbose = verbose)
 
   # do not process in absence of study attribute
@@ -87,40 +89,40 @@ y_grp <- function(z, x, refcode, pkg, verbose, tail_adjust = FALSE) {
 
   if (dist == "NO") {
     check_names(df = r, needed = c("x", "mean", "sd"))
-    mean <- approx(x = r[["x"]], y = r[["mean"]], xout = x)$y
-    sd <- approx(x = r[["x"]], y = r[["sd"]], xout = x)$y
+    mean <- approx(x = r[["x"]], y = r[["mean"]], xout = x, rule = rule)$y
+    sd <- approx(x = r[["x"]], y = r[["sd"]], xout = x, rule = rule)$y
     return(yt(mean + z * sd, study))
   }
   if (dist == "LMS") {
     check_names(df = r, needed = c("x", "L", "M", "S"))
-    L <- approx(x = r[["x"]], y = r[["L"]], xout = x)$y
-    M <- approx(x = r[["x"]], y = r[["M"]], xout = x)$y
-    S <- approx(x = r[["x"]], y = r[["S"]], xout = x)$y
+    L <- approx(x = r[["x"]], y = r[["L"]], xout = x, rule = rule)$y
+    M <- approx(x = r[["x"]], y = r[["M"]], xout = x, rule = rule)$y
+    S <- approx(x = r[["x"]], y = r[["S"]], xout = x, rule = rule)$y
     y <- ifelse(L > 0.01 | L < (-0.01), M * (1 + L * S * z)^(1 / L), M * exp(S * z))
     if (tail_adjust) y <- adjust_tail_y(y, z, L, M, S)
     return(yt(y, study))
   }
   if (dist == "BCCG") {
     check_names(df = r, needed = c("x", "nu", "mu", "sigma"))
-    nu <- approx(x = r[["x"]], y = r[["nu"]], xout = x)$y
-    mu <- approx(x = r[["x"]], y = r[["mu"]], xout = x)$y
-    sigma <- approx(x = r[["x"]], y = r[["sigma"]], xout = x)$y
+    nu <- approx(x = r[["x"]], y = r[["nu"]], xout = x, rule = rule)$y
+    mu <- approx(x = r[["x"]], y = r[["mu"]], xout = x, rule = rule)$y
+    sigma <- approx(x = r[["x"]], y = r[["sigma"]], xout = x, rule = rule)$y
     return(yt(qBCCG(pnorm(z), mu = mu, sigma = sigma, nu = nu), study))
   }
   if (dist == "BCPE") {
     check_names(df = r, needed = c("x", "nu", "mu", "sigma", "tau"))
-    mu <- approx(x = r[["x"]], y = r[["mu"]], xout = x)$y
-    sigma <- approx(x = r[["x"]], y = r[["sigma"]], xout = x)$y
-    nu <- approx(x = r[["x"]], y = r[["nu"]], xout = x)$y
-    tau <- approx(x = r[["x"]], y = r[["tau"]], xout = x)$y
+    mu <- approx(x = r[["x"]], y = r[["mu"]], xout = x, rule = rule)$y
+    sigma <- approx(x = r[["x"]], y = r[["sigma"]], xout = x, rule = rule)$y
+    nu <- approx(x = r[["x"]], y = r[["nu"]], xout = x, rule = rule)$y
+    tau <- approx(x = r[["x"]], y = r[["tau"]], xout = x, rule = rule)$y
     return(yt(qBCPE(pnorm(z), mu = mu, sigma = sigma, nu = nu, tau = tau), study))
   }
   if (dist == "BCT") {
     check_names(df = r, needed = c("x", "nu", "mu", "sigma", "tau"))
-    mu <- approx(x = r[["x"]], y = r[["mu"]], xout = x)$y
-    sigma <- approx(x = r[["x"]], y = r[["sigma"]], xout = x)$y
-    nu <- approx(x = r[["x"]], y = r[["nu"]], xout = x)$y
-    tau <- approx(x = r[["x"]], y = r[["tau"]], xout = x)$y
+    mu <- approx(x = r[["x"]], y = r[["mu"]], xout = x, rule = rule)$y
+    sigma <- approx(x = r[["x"]], y = r[["sigma"]], xout = x, rule = rule)$y
+    nu <- approx(x = r[["x"]], y = r[["nu"]], xout = x, rule = rule)$y
+    tau <- approx(x = r[["x"]], y = r[["tau"]], xout = x, rule = rule)$y
     return(yt(qBCT(pnorm(z), mu = mu, sigma = sigma, nu = nu, tau = tau), study))
   }
 
