@@ -1,3 +1,11 @@
+# yzy 0.5.1
+
+* Allow for scalar `x` and `refcode` arguments in `z()` and `y()`
+
+# yzy 0.5.0
+
+* Adds `rule` argument to `z()` and `y()`
+
 # yzy 0.4.0
 
 * Adds `pkg` and `verbose` arguments to `z()`, `y()` and `load_reference()`
