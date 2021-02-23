@@ -44,8 +44,8 @@ value. The default is 3 decimals.}
     extrapolation should differ.}
 
 \item{tail_adjust}{Logical. If \code{TRUE} the procedure applies the WHO
-method for tail adjustment under the LMS distribution.
-The default is \code{FALSE}.}
+method for tail adjustment under the LMS distribution. We do not recommend
+this. The default is \code{FALSE}.}
 
 \item{scale}{The maximum of the scale. The default (\code{100}) returns
 percentiles. Set \code{scale = 1} to obtain probabilities.}
@@ -71,8 +71,8 @@ Functions \code{y2p()} and \code{p2y()} functions are the inverse of each other.
 y <- c(50, 50, 60, 60, 4, 4, 4, 4)
 x <- c(rep(0.1, 4), rep(0.1, 4))
 refcode <- c(
-  rep(c("who_2011_hgt_male_", "who_2011_hgt_female_"), 2),
-  rep(c("who_2011_wgt_male_", "who_2011_wgt_female_"), 2)
+  rep(c("who_2006_hgt_male_", "who_2006_hgt_female_"), 2),
+  rep(c("who_2006_wgt_male_", "who_2006_wgt_female_"), 2)
 )
 y2p(y, x, refcode)
 }

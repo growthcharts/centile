@@ -23,8 +23,8 @@
 #' @param dec A scalar value indicating the number of decimals used to round the
 #' value. The default is 3 decimals.
 #' @param tail_adjust Logical. If \code{TRUE} the procedure applies the WHO
-#' method for tail adjustment under the LMS distribution.
-#' The default is \code{FALSE}.
+#' method for tail adjustment under the LMS distribution. We do not recommend
+#' this. The default is \code{FALSE}.
 #' @param \dots Not used.
 #' @inheritParams stats::approx
 #' @return A vector with `length(y)` elements containing the Z-scores.
@@ -32,8 +32,8 @@
 #' @examples
 #' y <- c(50, 50, 60, 60, 4, 4, 4, 4)
 #' x <- c(rep(0.1, 4), rep(0.1, 4))
-#' refcode <- c(rep(c("who_2011_hgt_male_", "who_2011_hgt_female_"), 2),
-#'              rep(c("who_2011_wgt_male_", "who_2011_wgt_female_"), 2))
+#' refcode <- c(rep(c("who_2006_hgt_male_", "who_2006_hgt_female_"), 2),
+#'              rep(c("who_2006_wgt_male_", "who_2006_wgt_female_"), 2))
 #' y2z(y, x, refcode)
 #' @export
 y2z <- function(y, x, refcode, pkg = "centile", verbose = FALSE,

@@ -44,8 +44,8 @@ value. The default is 3 decimals.}
     extrapolation should differ.}
 
 \item{tail_adjust}{Logical. If \code{TRUE} the procedure applies the WHO
-method for tail adjustment under the LMS distribution.
-The default is \code{FALSE}.}
+method for tail adjustment under the LMS distribution. We do not recommend
+this. The default is \code{FALSE}.}
 
 \item{scale}{The maximum of the scale. The default (\code{100}) returns for
 percentiles. Set \code{scale = 1} to obtain probabilities.}
@@ -70,7 +70,7 @@ Functions \code{p2y()} and \code{y2p()} functions are the inverse of each other.
 }
 \examples{
 # Obtain the 10th, 50th and 90th height centile for a boy aged 1 yr on WHO
-p2y(c(10, 50, 90), rep(1, 3), "who_2011_hgt_male_")
+p2y(c(10, 50, 90), rep(1, 3), "who_2006_hgt_male_")
 }
 \author{
 Stef van Buuren, 2021

@@ -17,15 +17,8 @@
 #' @return A vector with `length(z)` elements containing the measurements.
 #' @author Stef van Buuren, 2021
 #' @examples
-#' z <- c(0, -1.662, 0.928, -1.662, -1.268, -1.697, -1.268, -1.697)
-#' x <- rep(c(0.3, 60), 4)
-#' refcode <- c(
-#'   "nl_2012_hdc_male_20", "nl_2012_wfh_male_",
-#'   "nl_2012_hdc_male_30", "nl_2012_wfh_male_",
-#'   "nl_1997_hdc_male_nl", "nl_1997_wfh_male_nla",
-#'   "nl_1997_hdc_male_nl", "nl_1997_wfh_male_nla"
-#' )
-#' y <- z2y(z, x, refcode)
+#' # height SD -2:2 according to WHO standard for 6 month year old girl
+#' z2y(z = -2:2, x = rep(0.5, 5), "who_2006_hgt_female_")
 #' @export
 z2y <- function(z, x, refcode, pkg = "centile", verbose = FALSE,
                 dec = 3L, rule = 1L, tail_adjust = FALSE, ...) {

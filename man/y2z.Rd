@@ -43,8 +43,8 @@ value. The default is 3 decimals.}
     extrapolation should differ.}
 
 \item{tail_adjust}{Logical. If \code{TRUE} the procedure applies the WHO
-method for tail adjustment under the LMS distribution.
-The default is \code{FALSE}.}
+method for tail adjustment under the LMS distribution. We do not recommend
+this. The default is \code{FALSE}.}
 
 \item{\dots}{Not used.}
 }
@@ -66,8 +66,8 @@ Functions \code{y2z()} and \code{z2y()} functions are the inverse of each other.
 \examples{
 y <- c(50, 50, 60, 60, 4, 4, 4, 4)
 x <- c(rep(0.1, 4), rep(0.1, 4))
-refcode <- c(rep(c("who_2011_hgt_male_", "who_2011_hgt_female_"), 2),
-             rep(c("who_2011_wgt_male_", "who_2011_wgt_female_"), 2))
+refcode <- c(rep(c("who_2006_hgt_male_", "who_2006_hgt_female_"), 2),
+             rep(c("who_2006_wgt_male_", "who_2006_wgt_female_"), 2))
 y2z(y, x, refcode)
 }
 \author{

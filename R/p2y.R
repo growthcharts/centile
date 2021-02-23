@@ -18,7 +18,7 @@
 #' @author Stef van Buuren, 2021
 #' @examples
 #' # Obtain the 10th, 50th and 90th height centile for a boy aged 1 yr on WHO
-#' p2y(c(10, 50, 90), rep(1, 3), "who_2011_hgt_male_")
+#' p2y(c(10, 50, 90), rep(1, 3), "who_2006_hgt_male_")
 #' @export
 p2y <- function(p, x, refcode, pkg = "centile", verbose = FALSE,
                 dec = 3L, rule = 1L, tail_adjust = FALSE,

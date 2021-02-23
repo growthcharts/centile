@@ -19,8 +19,8 @@
 #' y <- c(50, 50, 60, 60, 4, 4, 4, 4)
 #' x <- c(rep(0.1, 4), rep(0.1, 4))
 #' refcode <- c(
-#'   rep(c("who_2011_hgt_male_", "who_2011_hgt_female_"), 2),
-#'   rep(c("who_2011_wgt_male_", "who_2011_wgt_female_"), 2)
+#'   rep(c("who_2006_hgt_male_", "who_2006_hgt_female_"), 2),
+#'   rep(c("who_2006_wgt_male_", "who_2006_wgt_female_"), 2)
 #' )
 #' y2p(y, x, refcode)
 #' @export
