@@ -16,15 +16,15 @@ for (lib in libs) {
 }
 
 usethis::use_data(
-  who_2011_bmi_female_,
-  who_2011_bmi_male_,
-  who_2011_hdc_female_,
-  who_2011_hdc_male_,
-  who_2011_hgt_female_,
-  who_2011_hgt_male_,
-  who_2011_wfh_female_,
-  who_2011_wfh_male_,
-  who_2011_wgt_female_,
-  who_2011_wgt_male_,
+  who_2006_bmi_female_,
+  who_2006_bmi_male_,
+  who_2007_hdc_female_,
+  who_2007_hdc_male_,
+  who_2006_hgt_female_,
+  who_2006_hgt_male_,
+  who_2006_wfh_female_,
+  who_2006_wfh_male_,
+  who_2006_wgt_female_,
+  who_2006_wgt_male_,
   internal = TRUE, overwrite = TRUE
 )

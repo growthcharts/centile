@@ -3,7 +3,7 @@ year = 2006
 yname = wfh
 sex = female
 distribution = LMS
-citation = WHO
+citation = WHO 2006
 publication = WHO Multicentre Growth Reference Study Group (2006). WHO Child Growth Standards: Length/height-for-age, weight-for-age, weight-for-length, weight-for-height and body mass index-for-age: Methods and development. Geneva: World Health Organization; pp 312. (web site: http://www.who.int/childgrowth/publications/en/)
 [data]
 x	L	M	S
@@ -27,7 +27,7 @@ x	L	M	S
 66.7	-0.3833	7.6158	0.09097
 66.8	-0.3833	7.6375	0.09096
 66.9	-0.3833	7.659	0.09095
-67	-0.3833	7.6806	0.090939999999999993
+67	-0.3833	7.6806	0.090940
 67.1	-0.3833	7.702	0.09093
 67.2	-0.3833	7.7234	0.09091
 67.3	-0.3833	7.7448	0.0909

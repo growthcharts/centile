@@ -1,18 +1,18 @@
 
 test_that("finds internal reference", {
-  expect_s3_class(load_reference("who_2011_hgt_male_"), "tbl")
+  expect_s3_class(load_reference("who_2006_hgt_male_"), "tbl")
 })
 
 test_that("finds internal reference: table", {
-  expect_s3_class(load_reference("who_2011_hgt_male_", "table"), "tbl")
+  expect_s3_class(load_reference("who_2006_hgt_male_", "table"), "tbl")
 })
 
 test_that("finds internal reference: study", {
-  expect_type(load_reference("who_2011_hgt_male_", "study"), "character")
+  expect_type(load_reference("who_2006_hgt_male_", "study"), "character")
 })
 
 test_that("finds internal reference: index", {
-  expect_type(load_reference("who_2011_hgt_male_", "index"), "double")
+  expect_type(load_reference("who_2006_hgt_male_", "index"), "double")
 })
 
 test_that("cannot find invalid refcode", {

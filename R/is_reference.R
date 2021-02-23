@@ -12,5 +12,6 @@
 #' is_reference(myref)
 #' @export
 is_reference <- function(x) {
-  inherits(x, "reference")
+  study <- attr(x, "study")
+  is.data.frame(x) && !is.null(study)
 }

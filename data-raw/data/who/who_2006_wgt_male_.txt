@@ -3,7 +3,7 @@ year = 2006
 yname = wgt
 sex = male
 distribution = LMS
-citation = WHO
+citation = WHO 2006
 publication = WHO Multicentre Growth Reference Study Group (2006). WHO Child Growth Standards: Length/height-for-age, weight-for-age, weight-for-length, weight-for-height and body mass index-for-age: Methods and development. Geneva: World Health Organization; pp 312. (web site: http://www.who.int/childgrowth/publications/en/)
 Remark = Supplement by Gerko Vink for wgt 10-19 yrs, given hgt 5-19 and bmi 5-19 references
 [data]

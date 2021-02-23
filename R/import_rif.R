@@ -50,6 +50,5 @@ import_rif <- function(file) {
 
   # save
   attr(data, "study") <- study
-  class(data) <- "reference"
   data
 }

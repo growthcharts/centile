@@ -3,7 +3,7 @@ year = 2007
 yname = hdc
 sex = male
 distribution = LMS
-citation = WHO
+citation = WHO 2007
 publication = WHO Multicentre Growth Reference Study Group (2007). WHO Child Growth Standards: Head circumference-for-age, arm circumference-for-age, triceps skinfold-for-age and subscapular skinfold-for-age: Methods and development. Geneva: World Health Organization; pp 217. (web site: http://www.who.int/childgrowth/publications/en/ )
 [data]
 x	L	M	S
