@@ -1,10 +1,10 @@
 name = who
-year = 2011
+year = 2006
 yname = bmi
 sex = female
 distribution = LMS
 citation = WHO
-publication = http://www.who.int and supplement by Gerko Vink for WFA 10-19
+publication = WHO Multicentre Growth Reference Study Group (2006). WHO Child Growth Standards: Length/height-for-age, weight-for-age, weight-for-length, weight-for-height and body mass index-for-age: Methods and development. Geneva: World Health Organization; pp 312. (web site: http://www.who.int/childgrowth/publications/en/)
 [data]
 x	L	M	S
 0	-0.0631	13.3363	0.09272
