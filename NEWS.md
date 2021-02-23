@@ -1,3 +1,8 @@
+# centile 0.6.1
+
+* Improves documentation for WHO standard
+* Tweak examples so as to use only internal data
+
 # centile 0.6.0
 
 * Major rewrite including several breaking changes
