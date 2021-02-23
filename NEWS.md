@@ -1,3 +1,7 @@
+# centile 0.7.0 
+
+* Adds specification of RIF format in vignette
+
 # centile 0.6.1
 
 * Improves documentation for WHO standard
