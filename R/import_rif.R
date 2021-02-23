@@ -1,6 +1,6 @@
-#' Reads a REF formatted file into a tibble
+#' Import a RIF formatted file into a tibble
 #'
-#' Reads a file that is stored in REF format and returns a tibble. The function
+#' Reads a file that is stored in RIF format and returns a tibble. The function
 #' validates the presence of required fields, and checks whether the variable
 #' names in the data match the specified distribution.
 #'
@@ -8,10 +8,10 @@
 #' @return A tibble with an attribute called \code{"study"}.
 #' @author Stef van Buuren 2021
 #' @examples
-#' fn <- system.file("testdata/be_2009_bmi_female_.txt", package = "yzy")
-#' myref <- read_ref(fn)
+#' fn <- system.file("testdata/be_2009_bmi_female_.txt", package = "centile")
+#' myref <- import_rif(fn)
 #' @export
-read_ref <- function(file) {
+import_rif <- function(file) {
 
   # find line of data block directive
   lines <- parse_character(read_lines(file, n_max = 25L))

@@ -7,9 +7,9 @@ for (lib in libs) {
   refcodes <- rep("", length(files))
   names(refcodes) <- files
   for (file in files) {
-    ref <- yzy::read_ref(file.path(path, lib, file))
+    ref <- centile::read_ref(file.path(path, lib, file))
     s <- attr(ref, "study")
-    refcode <- yzy::make_refcode(s["name"], s["year"], s["yname"], s["sex"], s["sub"])
+    refcode <- centile::make_refcode(s["name"], s["year"], s["yname"], s["sex"], s["sub"])
     assign(refcode, ref)
     refcodes[file] <- refcode
   }

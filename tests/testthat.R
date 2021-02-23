@@ -1,4 +1,4 @@
 library(testthat)
-library(yzy)
+library(centile)
 
-test_check("yzy")
+test_check("centile")

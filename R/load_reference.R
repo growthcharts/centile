@@ -5,7 +5,7 @@
 #' @param element Keyword, either `"all"`, `"table"`, `"index"` or `"study"`.
 #' The default is `"all"`.
 #' @param pkg The package containing the reference. The package must be loaded
-#' and attached. The default `pkg = "yzy"` searches in the home package.
+#' and attached. The default `pkg = "centile"` searches in the home package.
 #' @param verbose For more verbose output, set to `TRUE`.
 #' @return The return value depends on the `element` parameter.
 #'
@@ -21,7 +21,7 @@
 #' @export
 load_reference <- function(refcode = NULL,
                            element = c("all", "table", "index", "study"),
-                           pkg = "yzy",
+                           pkg = "centile",
                            verbose = FALSE) {
   if (is.null(refcode)) {
     return(NULL)

@@ -1,6 +1,6 @@
-# Getting help with yzy
+# Getting help with centile
 
-Thanks for using yzy!
+Thanks for using centile!
 Before filing an issue, there are a few places to explore and pieces to put together to make the process as smooth as possible.
 
 ## Make a reprex
