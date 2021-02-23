@@ -23,7 +23,8 @@ vector of greater than length 1.
 Using a value of \code{\link[readr:clipboard]{clipboard()}} will read from the system clipboard.}
 }
 \value{
-A tibble with an attribute called \code{"study"}.
+An object of class \code{reference}, basically a tibble with an attribute
+called \code{study}.
 }
 \description{
 Reads a file that is stored in RIF format and returns a tibble. The function
@@ -31,7 +32,7 @@ validates the presence of required fields, and checks whether the variable
 names in the data match the specified distribution.
 }
 \examples{
-fn <- system.file("testdata/be_2009_bmi_female_.txt", package = "centile")
+fn <- system.file("testdata/nl_2009_hgt_male_nl.txt", package = "centile")
 myref <- import_rif(fn)
 }
 \author{

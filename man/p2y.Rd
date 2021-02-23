@@ -25,7 +25,9 @@ decimal age or height) at which conversion is desired. A scalar \code{x} will be
 expanded to \code{length(y)}.}
 
 \item{refcode}{A character vector with \code{length(y)} elements, each of which
-points to a reference. Scalar \code{refcode} expands to \code{length(y)}.}
+is the name of a reference. Scalar \code{refcode} expands to \code{length(y)}.
+Alternatively, \code{refcode} may be an object of class \code{reference}, typically
+produced by \code{\link[=import_rif]{import_rif()}}.}
 
 \item{pkg}{The package containing the references in the \code{R/sysdata.dta} object.
 The package needs to be loaded. The default \code{pkg = "centile"} searches in

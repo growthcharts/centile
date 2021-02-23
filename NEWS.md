@@ -2,6 +2,8 @@
 
 * Improves documentation for WHO standard
 * Tweak examples so as to use only internal data
+* Introduce informal S3 class `reference`
+* Make argument `refcode` accept object of class `reference`
 
 # centile 0.6.0
 

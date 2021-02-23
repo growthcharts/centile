@@ -12,7 +12,8 @@ load_reference(
 )
 }
 \arguments{
-\item{refcode}{String, code of a reference. Only the first element is loaded.}
+\item{refcode}{String, code of a reference. Only the first element is loaded.
+Alternatively, if \code{refcode} is a reference, the function uses it.}
 
 \item{element}{Keyword, either \code{"all"}, \code{"table"}, \code{"index"} or \code{"study"}.
 The default is \code{"all"}.}
@@ -32,7 +33,9 @@ The return value depends on the \code{element} parameter.\tabular{ll}{
 }
 }
 \description{
-This function provides access to the built-in growth references.
+This function searches for references stored in the \code{sysdata.dta}
+object in package \code{pkg}. If \code{refcode} is a reference
+then
 }
 \examples{
 ref <- load_reference("gc_2019_dsc_male_")

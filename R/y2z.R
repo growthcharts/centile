@@ -15,7 +15,9 @@
 #' decimal age or height) at which conversion is desired. A scalar `x` will be
 #' expanded to `length(y)`.
 #' @param refcode A character vector with `length(y)` elements, each of which
-#' points to a reference. Scalar `refcode` expands to `length(y)`.
+#' is the name of a reference. Scalar `refcode` expands to `length(y)`.
+#' Alternatively, `refcode` may be an object of class `reference`, typically
+#' produced by [import_rif()].
 #' @param pkg The package containing the references in the `R/sysdata.dta` object.
 #' The package needs to be loaded. The default `pkg = "centile"` searches in
 #' the `centile` package.
@@ -30,11 +32,18 @@
 #' @return A vector with `length(y)` elements containing the Z-scores.
 #' @author Stef van Buuren, 2021
 #' @examples
-#' y <- c(50, 50, 60, 60, 4, 4, 4, 4)
-#' x <- c(rep(0.1, 4), rep(0.1, 4))
-#' refcode <- c(rep(c("who_2006_hgt_male_", "who_2006_hgt_female_"), 2),
-#'              rep(c("who_2006_wgt_male_", "who_2006_wgt_female_"), 2))
+#' # Weight SD 1 month old boy and girl of 4 KG using built-in WHO references
+#' y <- c(4, 4)
+#' x <- c(1/12, 1/12)
+#' refcode <- c("who_2006_wgt_male_", "who_2006_wgt_female_")
 #' y2z(y, x, refcode)
+#'
+#' # using external reference, for females only
+#' fn <- system.file("testdata/nl_2009_wgt_female_nl.txt", package = "centile")
+#' myref <- import_rif(fn)
+#' head(myref)
+#' head(attr(myref, "study"))
+#' y2z(y, x, myref)
 #' @export
 y2z <- function(y, x, refcode, pkg = "centile", verbose = FALSE,
                 dec = 3L, rule = 1L, tail_adjust = FALSE, ...) {
@@ -42,6 +51,14 @@ y2z <- function(y, x, refcode, pkg = "centile", verbose = FALSE,
     message("y2z(): Non-conformable arguments y and x")
     return(rep(NA_real_, length(y)))
   }
+
+  # if refcode is a reference, use that for all y and x
+  if (is_reference(refcode)) {
+    z <- z_grp(y = y, x = x, refcode = refcode, verbose = verbose,
+               pkg = pkg, rule = rule, tail_adjust = tail_adjust)
+    return(round(z, digits = dec))
+  }
+
   if (length(y) != length(refcode) && length(refcode) > 1L) {
     message("y2z(): Non-conformable arguments y and refcode")
     return(rep(NA_real_, length(y)))
@@ -50,6 +67,7 @@ y2z <- function(y, x, refcode, pkg = "centile", verbose = FALSE,
     return(numeric(0))
   }
 
+  # alternatively, split calculations by refcode
   data.frame(y = y, x = x, refcode = refcode) %>%
     group_by(.data$refcode) %>%
     mutate(z = z_grp(

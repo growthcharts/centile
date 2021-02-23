@@ -5,10 +5,11 @@
 #' names in the data match the specified distribution.
 #'
 #' @inheritParams readr::read_lines
-#' @return A tibble with an attribute called \code{"study"}.
+#' @return An object of class `reference`, basically a tibble with an attribute
+#' called `study`.
 #' @author Stef van Buuren 2021
 #' @examples
-#' fn <- system.file("testdata/be_2009_bmi_female_.txt", package = "centile")
+#' fn <- system.file("testdata/nl_2009_hgt_male_nl.txt", package = "centile")
 #' myref <- import_rif(fn)
 #' @export
 import_rif <- function(file) {
@@ -49,5 +50,6 @@ import_rif <- function(file) {
 
   # save
   attr(data, "study") <- study
+  class(data) <- "reference"
   data
 }

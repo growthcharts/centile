@@ -24,7 +24,9 @@ decimal age or height) at which conversion is desired. A scalar \code{x} will be
 expanded to \code{length(y)}.}
 
 \item{refcode}{A character vector with \code{length(y)} elements, each of which
-points to a reference. Scalar \code{refcode} expands to \code{length(y)}.}
+is the name of a reference. Scalar \code{refcode} expands to \code{length(y)}.
+Alternatively, \code{refcode} may be an object of class \code{reference}, typically
+produced by \code{\link[=import_rif]{import_rif()}}.}
 
 \item{pkg}{The package containing the references in the \code{R/sysdata.dta} object.
 The package needs to be loaded. The default \code{pkg = "centile"} searches in
@@ -65,8 +67,19 @@ units even if the reference is based on some transform of \code{y}.
 Functions \code{y2z()} and \code{z2y()} functions are the inverse of each other.
 }
 \examples{
-# height SD -2:2 according to WHO standard for 6 month year old girl
-z2y(z = -2:2, x = rep(0.5, 5), "who_2006_hgt_female_")
+# height centiles SD -2:2 according to WHO standard for 6 month year old girl
+# using built-in reference
+z2y(z = -2:2, x = rep(0.5, 5), "who_2006_hgt_female_", pkg = "centile")
+
+# same using external Dutch reference
+fn <- system.file("testdata/nl_2009_hgt_female_nl.txt", package = "centile")
+myref <- import_rif(fn)
+head(myref)
+head(attr(myref, "study"))
+z2y(z = -2:2, x = rep(0.5, 5), myref)
+
+# find location of -2 SD line for 6 months old boys and girls, WHO Standard
+z2y(c(-2, -2), c(0.5, 0.5), c("who_2006_hgt_male_", "who_2006_hgt_female_"))
 }
 \author{
 Stef van Buuren, 2021

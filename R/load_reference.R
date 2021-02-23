@@ -1,7 +1,10 @@
 #' Load growth reference
 #'
-#' This function provides access to the built-in growth references.
+#' This function searches for references stored in the `sysdata.dta`
+#' object in package `pkg`. If `refcode` is a reference
+#' then
 #' @param refcode String, code of a reference. Only the first element is loaded.
+#' Alternatively, if `refcode` is a reference, the function uses it.
 #' @param element Keyword, either `"all"`, `"table"`, `"index"` or `"study"`.
 #' The default is `"all"`.
 #' @param pkg The package containing the reference. The package must be loaded
@@ -26,24 +29,31 @@ load_reference <- function(refcode = NULL,
   if (is.null(refcode)) {
     return(NULL)
   }
-  if (!pkg %in% loadedNamespaces()) {
-    if (verbose) warning("Package ", pkg, " not loaded.")
-    return(NULL)
-  }
-  ref <- get0(refcode[[1L]], envir = asNamespace(pkg))
-  if (is.null(ref)) {
-    if (verbose) warning("Reference ", refcode[[1L]], " not found in package ", pkg, ".")
-    return(NULL)
+
+  if (is_reference(refcode)) {
+    # refcode is a reference
+    ref <- refcode
+  } else {
+    # refcode is a string, get the reference from pkg
+    if (!pkg %in% loadedNamespaces()) {
+      if (verbose) warning("Package ", pkg, " not loaded.")
+      return(NULL)
+    }
+    ref <- get0(refcode[[1L]], envir = asNamespace(pkg))
+    if (is.null(ref)) {
+      if (verbose) warning("Reference ", refcode[[1L]], " not found in package ", pkg, ".")
+      return(NULL)
+    }
   }
 
   element <- match.arg(element)
   switch(element,
-    all = ref,
-    table = {
-      attr(ref, "study") <- NULL
-      ref
-    },
-    index = ref[["x"]],
-    study = attr(ref, "study")
+         all = ref,
+         table = {
+           attr(ref, "study") <- NULL
+           ref
+         },
+         index = ref[["x"]],
+         study = attr(ref, "study")
   )
 }

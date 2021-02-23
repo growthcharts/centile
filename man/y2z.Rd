@@ -24,7 +24,9 @@ decimal age or height) at which conversion is desired. A scalar \code{x} will be
 expanded to \code{length(y)}.}
 
 \item{refcode}{A character vector with \code{length(y)} elements, each of which
-points to a reference. Scalar \code{refcode} expands to \code{length(y)}.}
+is the name of a reference. Scalar \code{refcode} expands to \code{length(y)}.
+Alternatively, \code{refcode} may be an object of class \code{reference}, typically
+produced by \code{\link[=import_rif]{import_rif()}}.}
 
 \item{pkg}{The package containing the references in the \code{R/sysdata.dta} object.
 The package needs to be loaded. The default \code{pkg = "centile"} searches in
@@ -64,11 +66,18 @@ Z-score.
 Functions \code{y2z()} and \code{z2y()} functions are the inverse of each other.
 }
 \examples{
-y <- c(50, 50, 60, 60, 4, 4, 4, 4)
-x <- c(rep(0.1, 4), rep(0.1, 4))
-refcode <- c(rep(c("who_2006_hgt_male_", "who_2006_hgt_female_"), 2),
-             rep(c("who_2006_wgt_male_", "who_2006_wgt_female_"), 2))
+# Weight SD 1 month old boy and girl of 4 KG using built-in WHO references
+y <- c(4, 4)
+x <- c(1/12, 1/12)
+refcode <- c("who_2006_wgt_male_", "who_2006_wgt_female_")
 y2z(y, x, refcode)
+
+# using external reference, for females only
+fn <- system.file("testdata/nl_2009_wgt_female_nl.txt", package = "centile")
+myref <- import_rif(fn)
+head(myref)
+head(attr(myref, "study"))
+y2z(y, x, myref)
 }
 \author{
 Stef van Buuren, 2021

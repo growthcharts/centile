@@ -17,8 +17,19 @@
 #' @return A vector with `length(z)` elements containing the measurements.
 #' @author Stef van Buuren, 2021
 #' @examples
-#' # height SD -2:2 according to WHO standard for 6 month year old girl
-#' z2y(z = -2:2, x = rep(0.5, 5), "who_2006_hgt_female_")
+#' # height centiles SD -2:2 according to WHO standard for 6 month year old girl
+#' # using built-in reference
+#' z2y(z = -2:2, x = rep(0.5, 5), "who_2006_hgt_female_", pkg = "centile")
+#'
+#' # same using external Dutch reference
+#' fn <- system.file("testdata/nl_2009_hgt_female_nl.txt", package = "centile")
+#' myref <- import_rif(fn)
+#' head(myref)
+#' head(attr(myref, "study"))
+#' z2y(z = -2:2, x = rep(0.5, 5), myref)
+#'
+#' # find location of -2 SD line for 6 months old boys and girls, WHO Standard
+#' z2y(c(-2, -2), c(0.5, 0.5), c("who_2006_hgt_male_", "who_2006_hgt_female_"))
 #' @export
 z2y <- function(z, x, refcode, pkg = "centile", verbose = FALSE,
                 dec = 3L, rule = 1L, tail_adjust = FALSE, ...) {
@@ -26,6 +37,14 @@ z2y <- function(z, x, refcode, pkg = "centile", verbose = FALSE,
     message("z2y(): Non-conformable arguments z and x")
     return(rep(NA_real_, length(z)))
   }
+
+  # if refcode is a reference, use that for all z and x
+  if (is_reference(refcode)) {
+    y <- y_grp(z = z, x = x, refcode = refcode, verbose = verbose,
+               pkg = pkg, rule = rule, tail_adjust = tail_adjust)
+    return(round(y, digits = dec))
+  }
+
   if (length(z) != length(refcode) && length(refcode) > 1L) {
     message("z2y(): Non-conformable arguments z and refcode")
     return(rep(NA_real_, length(z)))
@@ -34,6 +53,7 @@ z2y <- function(z, x, refcode, pkg = "centile", verbose = FALSE,
     return(numeric(0))
   }
 
+  # alternatively, split calculations by refcode
   data.frame(z = z, x = x, refcode = refcode) %>%
     group_by(.data$refcode) %>%
     mutate(y = y_grp(
