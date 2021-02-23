@@ -1,18 +1,18 @@
-Package: yzy
-Title: Converting Measurements and Z-scores with Conditional References
-Version: 0.5.1
+Package: centile
+Title: Translate Measurements, Z-Scores and Centiles with the RIF format
+Version: 0.6.0
 Authors@R: 
     person(given = "Stef",
            family = "van Buuren",
            role = c("aut", "cre"),
            email = "stef.vanbuuren@tno.nl",
            comment = c(ORCID = "0000-0003-1098-2119"))
-Description: Lightweight tool for conversion between measurements (y) and
-    Z-scores (z) under conditional reference distributions. Defines a simple 
-    text format for exchanging reference distributions. Provides tools to read, 
-    validate, name and load references as R objects. Supported distributions: 
-    Normal, LMS, Box-Cox Green Cole (BCCG), Box-Cox Power Exponential (BCPE) 
-    and Box-Cox t (BCT).
+Description: Defines a simple Reference Interchange Format (RIF) format for 
+    growth references. Provides tools to import, validate, name and load 
+    growth references as R objects. Converts measurements into Z-scores 
+    or centile estimates, and vice versa. Supported distributions include the 
+    normal, LMS, Box-Cox Green Cole (BCCG), Box-Cox Power Exponential (BCPE) 
+    and Box-Cox t (BCT) distributions.
 License: AGPL (>= 3) + file LICENSE
 Imports:
     dplyr,

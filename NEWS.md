@@ -1,3 +1,11 @@
+# centile 0.6.0
+
+* Major rewrite including several breaking changes
+* Renames the package to `centile`
+* Renames `y()` and `z()` to `z2y()` and `y2z()`
+* Introduces `y2p()` and `p2y()`
+* Renames `read_ref()` to `import_rif()`
+
 # yzy 0.5.1
 
 * Allow for scalar `x` and `refcode` arguments in `z()` and `y()`

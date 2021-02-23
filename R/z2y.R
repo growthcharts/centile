@@ -9,10 +9,10 @@
 #' the `yt` field (after calculating of `y`), so that the `y` have the original
 #' units even if the reference is based on some transform of `y`.
 #'
-#' Functions \code{z()} and \code{y()} functions are the inverse of each other.
+#' Functions \code{y2z()} and \code{z2y()} functions are the inverse of each other.
 #'
 #' @param z A numerical vector with Z-scores.
-#' @inheritParams z
+#' @inheritParams y2z
 #' @inheritParams stats::approx
 #' @return A vector with `length(z)` elements containing the measurements.
 #' @author Stef van Buuren, 2021
@@ -25,16 +25,16 @@
 #'   "nl_1997_hdc_male_nl", "nl_1997_wfh_male_nla",
 #'   "nl_1997_hdc_male_nl", "nl_1997_wfh_male_nla"
 #' )
-#' y <- y(z, x, refcode)
+#' y <- z2y(z, x, refcode)
 #' @export
-y <- function(z, x, refcode, pkg = "yzy", verbose = FALSE,
-              dec = 3L, rule = 1L, tail_adjust = FALSE, ...) {
+z2y <- function(z, x, refcode, pkg = "centile", verbose = FALSE,
+                dec = 3L, rule = 1L, tail_adjust = FALSE, ...) {
   if (length(z) != length(x) && length(x) > 1L) {
-    message("y(): Non-conformable arguments z and x")
+    message("z2y(): Non-conformable arguments z and x")
     return(rep(NA_real_, length(z)))
   }
   if (length(z) != length(refcode) && length(refcode) > 1L) {
-    message("y(): Non-conformable arguments z and refcode")
+    message("z2y(): Non-conformable arguments z and refcode")
     return(rep(NA_real_, length(z)))
   }
   if (!length(z)) {
@@ -53,7 +53,7 @@ y <- function(z, x, refcode, pkg = "yzy", verbose = FALSE,
       tail_adjust = tail_adjust
     )) %>%
     ungroup() %>%
-    pull(y) %>%
+    pull(.data$y) %>%
     round(digits = dec)
 }
 
@@ -123,5 +123,5 @@ y_grp <- function(z, x, refcode, pkg, verbose, rule, tail_adjust = FALSE) {
 
 
 adjust_tail_y <- function(y, z, L, M, S) {
-  stop("Tail adjustmunt for y() not implemented.")
+  stop("Tail adjustmunt for z2y() not implemented.")
 }
