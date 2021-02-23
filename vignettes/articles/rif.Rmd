@@ -1,0 +1,98 @@
+---
+title: "Reference Interchange Format (RIF)"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Background
+
+The Reference Interchange Format (RIF) is a simple text format for storing and exchanging growth references. Growth references typically consist of a conditioning variable, usually age or height, and a set of parameter estimates at each tabulated age or height. For example, the first four rows of the WHO Growth Standard for lengths of boys are
+
+```{r setup}
+library(centile)
+ref <- load_reference("who_2006_hgt_male_")
+head(ref, 4)
+```
+
+In this example, `x` stands for age in years and the `L`, `M` and `S` columns stand for the estimated parameters of the LMS model (Cole & Green 1992). The `study` attributes stores some additional information:
+
+```{r attr}
+head(attr(ref, "study"))
+```
+
+The RIF format is a simple way to store references as text files that can serve as input for different systems.
+
+## General specification
+
+Let us first take a look at an example. The following block contains the first 12 rows of the file `who_2006_bmi_female_.txt`.
+
+```
+name = who
+year = 2006
+yname = bmi
+sex = female
+distribution = LMS
+citation = WHO 2006
+publication = WHO Multicentre Growth Reference Study Group (2006). WHO Child Growth Standards: Length/height-for-age, weight-for-age, weight-for-length, weight-for-height and body mass index-for-age: Methods and development. Geneva: World Health Organization; pp 312. (web site: http://www.who.int/childgrowth/publications/en/)
+[data]
+x	L	M	S
+0	-0.0631	13.3363	0.09272
+0.0027	0.0362	13.3185	0.0936
+0.0055	0.1355	13.3006	0.09448
+...
+```
+
+A RIF formatted files should follow the following principles:
+
+- A RIF file contains the parameters of one reference distribution only. Thus, separate distributions for males and females go into different files;
+- The file starts with a header that describe the contents of the reference table. The section below provides the accepted keywords;
+- The `=`  sign separates the keyword and its value;
+- A special keyword `[DATA]` separates the header and data;
+- The first line after `[DATA]` contain the variable names. These names adhere to certain naming conventions given below;
+- There is one column named `x`, the conditioning variable;
+- Data columns are separated by tabs.
+
+## Keywords
+
+Keyword       | Required    | Interpretation
+------------- | ----------- | ---------------
+name          | Yes         | two-letter country code, `who`, `eu27`, `fenton`, and so on
+year          | Yes         | four number, may be left blank
+yname         | Yes         | Outcome: `hgt`, `wgt`, `hdc`, `wfh`, `bmi`, `dsc`
+sex           | No          | `male` or `female`, may be left blank
+sub           | No          | Subgroup
+distribution  | Yes         | `NO`, `LMS`, `BCCG`, `BCPE` or `BCT`
+citation      | No          | Short citation phrase
+publication   | No          | Reference to source documents
+remark        | No          | Free text for additional remarks
+tx            | No          | Transformation of `x` prior to Z-score calculation
+xt            | No          | Back-transform to `x` after Z-score calculation
+ty            | No          | Transformation of `y` prior to Z-score calculation
+yt            | No          | Back-transform to `y` after Z-score calculation
+
+Any other keywords, each on its own line, can be added and will be saved in `attr(ref, "study")`. The number of header rows is limited to 24.
+
+## Column names
+
+Apart from the column named `x` two or more column with parameters, depending on the specification of the distribution.
+
+Distribution  | Required                    | Interpretation
+------------- | --------------------------- | ---------------
+NO            | `mean`, `sd`                | Mean, Standard deviation
+LMS           | `M`, `S`, `L`               | Location, Scale, Skewness
+BCCG          | `mu`, `sigma`, `nu`         | Location, Scale, Skewness
+BCPE          | `mu`, `sigma`, `nu`, `tau`  | Location, Scale, Skewness, Kurtosis
+BCT           | `mu`, `sigma`, `nu`, `tau`  | Location, Scale, Skewness, Kurtosis
+
+Some other distributions can be specified, but no Z-scores will be calculated:
+
+Distribution  | Required                    | Interpretation
+------------- | --------------------------- | ---------------
+MEA           | `mean`                      | Mean only
+PCT           | `pxx`, `pyy`                | One or more percentiles (xx, yy numeric)
+MP            | `mean`, `pxx`, `pyy`        | Mean + Percentiles (xx, yy numeric)
