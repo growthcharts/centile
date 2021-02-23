@@ -14,6 +14,8 @@ Description: Defines a simple Reference Interchange Format (RIF) format for
     normal, LMS, Box-Cox Green Cole (BCCG), Box-Cox Power Exponential (BCPE) 
     and Box-Cox t (BCT) distributions.
 License: AGPL (>= 3) + file LICENSE
+Depends: 
+    R (>= 2.10)
 Imports:
     dplyr,
     gamlss.dist,
@@ -27,5 +29,4 @@ Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
-Depends: 
-    R (>= 2.10)
+URL: https://github.com/growtcharts/centile
