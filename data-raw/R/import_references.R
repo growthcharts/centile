@@ -7,7 +7,7 @@ for (lib in libs) {
   refcodes <- rep("", length(files))
   names(refcodes) <- files
   for (file in files) {
-    ref <- centile::read_ref(file.path(path, lib, file))
+    ref <- centile::import_rif(file.path(path, lib, file))
     s <- attr(ref, "study")
     refcode <- centile::make_refcode(s["name"], s["year"], s["yname"], s["sex"], s["sub"])
     assign(refcode, ref)
