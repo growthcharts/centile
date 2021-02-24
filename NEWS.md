@@ -1,3 +1,7 @@
+# centile 0.7.1
+
+* Adds `make_agegrid()` to calculate age grids
+
 # centile 0.7.0 
 
 * Adds specification of RIF format in vignette

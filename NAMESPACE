@@ -3,6 +3,7 @@
 export(import_rif)
 export(is_reference)
 export(load_reference)
+export(make_agegrid)
 export(make_refcode)
 export(p2y)
 export(p2z)
