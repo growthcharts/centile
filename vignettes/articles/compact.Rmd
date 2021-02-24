@@ -1,0 +1,60 @@
+---
+title: "Compact WHO growth standard"
+author: "Stef van Buuren"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(centile)
+```
+
+## Background
+
+The WHO Growth Standards are published in the form of reference tables. The age grid and the numeric formatting in these tables is somewhat detailed. For 
+example the height, BMI and weight references have 2026 age points, head circumference has 1857 age points and the weight-for-height references are stored in a table with 551 height points.
+
+The tables may contain more detail than needed, potentially wasting resources and slowing down computing in time-critical applications. This section looks into the question whether we can reduce the number of rows in these tables without affecting precision of the calculations.
+
+Let us study the height references for boys.
+
+```{r readbmi}
+full <- load_reference("who_2006_hgt_male_", pkg = "centile")
+head(full)
+tail(full)
+nrow(full)
+
+g <- make_agegrid("compact")
+head(g)
+tail(g)
+length(g)
+```
+
+The `make_agegrid()` function creates an age grid that fairly detailed for the early ages, but less so for later ages. Can we reduce 2026 into 95 rows? We use linear interpolation to reduce the reference to 95 rows, as follows:
+
+```{r}
+L <- approx(y = full$L, x = full$x, xout = g)$y
+M <- approx(y = full$M, x = full$x, xout = g)$y
+S <- approx(y = full$S, x = full$x, xout = g)$y
+cpt <- data.frame(x = g, L = L, M = M, S = S)
+attr(cpt, "study") <- attr(full, "study")
+is_reference(cpt)
+```
+
+Now let calculate fictitious measurements using both references, and compare the results:
+
+```{r}
+grid <- expand.grid(z = -2:2, x = seq(0, 19, 0.01))
+grid$yf <- z2y(x = grid$x, z = grid$z, ref = full)
+grid$yc <- z2y(x = grid$x, z = grid$z, ref = cpt)
+with(grid, plot(x = x, y = yf - yc, type = "l"))
+```
+
+The figure shows that the reculculate heights hoover around zero, as expected. Correspondence in the first two years is very good. The age 2 and 5 years are points at which different references have been combined. Age those ages the difference can be up to 3mm. It would be desirable if all differences would be within a range of, say, 1 mm. In order to achieve this, we need to more dense age grid.
+
+
