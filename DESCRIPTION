@@ -1,6 +1,6 @@
 Package: centile
 Title: Translate Measurements, Z-Scores and Centiles with the RIF format
-Version: 0.7.2
+Version: 0.8.0
 Authors@R: 
     person(given = "Stef",
            family = "van Buuren",

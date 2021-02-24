@@ -1,7 +1,8 @@
-# centile 0.7.1
+# centile 0.8.0
 
 * Adds `make_agegrid()` to calculate age grids
 * Adds an article looking into more compact WHO Standards
+* Make package more self-standing
 
 # centile 0.7.0 
 
