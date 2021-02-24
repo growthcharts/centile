@@ -38,5 +38,11 @@ object in package \code{pkg}. If \code{refcode} is a reference
 then
 }
 \examples{
-ref <- load_reference("gc_2019_dsc_male_")
+# use a built-in reference
+ref <- load_reference("who_2006_wgt_male_")
+head(ref)
+head(attr(ref, "study"))
+
+# use verbose = TRUE to find out problems
+ref <- load_reference("nl_1997_hgt_male_nl", verbose = TRUE)
 }

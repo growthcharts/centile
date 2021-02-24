@@ -45,6 +45,11 @@ z2y <- function(z, x, refcode, pkg = "centile", verbose = FALSE,
     return(round(y, digits = dec))
   }
 
+  if (is.data.frame(refcode)) {
+    message("z2y(): Argument refcode has no `study` attribute.")
+    return(rep(NA_real_, length(z)))
+  }
+
   if (length(z) != length(refcode) && length(refcode) > 1L) {
     message("z2y(): Non-conformable arguments z and refcode")
     return(rep(NA_real_, length(z)))
