@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Convert centiles into measurements — p2y • centile</title>
+<title>Creates an age grid according to a specified format — make_agegrid • centile</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,8 @@
 
 
 
-<meta property="og:title" content="Convert centiles into measurements — p2y" />
-<meta property="og:description" content="Converts centile scores into measurements
-(KG, CM, ...) using one or more external reference distributions." />
+<meta property="og:title" content="Creates an age grid according to a specified format — make_agegrid" />
+<meta property="og:description" content="Creates an age grid according to a specified format" />
 
 
 
@@ -127,109 +126,53 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Convert centiles into measurements</h1>
-    <small class="dont-index">Source: <a href='https://github.com/growtcharts/centile/blob/master/R/p2y.R'><code>R/p2y.R</code></a></small>
-    <div class="hidden name"><code>p2y.Rd</code></div>
+    <h1>Creates an age grid according to a specified format</h1>
+    <small class="dont-index">Source: <a href='https://github.com/growtcharts/centile/blob/master/R/make_agegrid.R'><code>R/make_agegrid.R</code></a></small>
+    <div class="hidden name"><code>make_agegrid.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Converts centile scores into measurements
-(KG, CM, ...) using one or more external reference distributions.</p>
+    <p>Creates an age grid according to a specified format</p>
     </div>
 
-    <pre class="usage"><span class='fu'>p2y</span><span class='op'>(</span>
-  <span class='va'>p</span>,
-  <span class='va'>x</span>,
-  <span class='va'>refcode</span>,
-  pkg <span class='op'>=</span> <span class='st'>"centile"</span>,
-  verbose <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  dec <span class='op'>=</span> <span class='fl'>3L</span>,
-  rule <span class='op'>=</span> <span class='fl'>1L</span>,
-  tail_adjust <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  scale <span class='op'>=</span> <span class='fl'>100</span>,
-  <span class='va'>...</span>
+    <pre class="usage"><span class='fu'>make_agegrid</span><span class='op'>(</span>
+  grid <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"compact"</span>, <span class='st'>"classic"</span>, <span class='st'>"extensive"</span>, <span class='st'>"0-104w"</span>, <span class='st'>"0-24m"</span>, <span class='st'>"0-21y"</span><span class='op'>)</span>,
+  unit <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"year"</span>, <span class='st'>"month"</span>, <span class='st'>"week"</span>, <span class='st'>"day"</span><span class='op'>)</span>,
+  dec <span class='op'>=</span> <span class='fl'>4L</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>p</th>
-      <td><p>A numerical vector with centiles.</p></td>
+      <th>grid</th>
+      <td><p>A character string specifying one of the following:
+<code>"compact"</code>, <code>"classic"</code>, <code>"extensive"</code>, <code>"0-104w"</code>,
+<code>"0-24m"</code> and <code>"0-21y"</code>.  The
+default produces an age grid between 0 and 21
+years with 95 points.</p></td>
     </tr>
     <tr>
-      <th>x</th>
-      <td><p>A vector containing <code><a href='https://rdrr.io/r/base/length.html'>length(y)</a></code> values of the numerical covariate (typically
-decimal age or height) at which conversion is desired. A scalar <code>x</code> will be
-expanded to <code><a href='https://rdrr.io/r/base/length.html'>length(y)</a></code>.</p></td>
-    </tr>
-    <tr>
-      <th>refcode</th>
-      <td><p>A character vector with <code><a href='https://rdrr.io/r/base/length.html'>length(y)</a></code> elements, each of which
-is the name of a reference. Scalar <code>refcode</code> expands to <code><a href='https://rdrr.io/r/base/length.html'>length(y)</a></code>.
-Alternatively, <code>refcode</code> may be an object of class <code>reference</code>, typically
-produced by <code><a href='import_rif.html'>import_rif()</a></code>.</p></td>
-    </tr>
-    <tr>
-      <th>pkg</th>
-      <td><p>The package containing the references in the <code>R/sysdata.dta</code> object.
-The package needs to be loaded. The default <code>pkg = "centile"</code> searches in
-the <code>centile</code> package.</p></td>
-    </tr>
-    <tr>
-      <th>verbose</th>
-      <td><p>Set to <code>TRUE</code> to turn on warnings</p></td>
+      <th>unit</th>
+      <td><p>Character string specifying the time unit. Choices
+are <code>"year"</code>, <code>"month"</code>, <code>"week"</code> and <code>"day"</code>.</p></td>
     </tr>
     <tr>
       <th>dec</th>
-      <td><p>A scalar value indicating the number of decimals used to round the
-value. The default is 3 decimals.</p></td>
-    </tr>
-    <tr>
-      <th>rule</th>
-      <td><p>an integer (of length 1 or 2) describing how interpolation
-    is to take place outside the interval [<code><a href='https://rdrr.io/r/base/Extremes.html'>min(x)</a></code>, <code><a href='https://rdrr.io/r/base/Extremes.html'>max(x)</a></code>].
-    If <code>rule</code> is <code>1</code> then <code>NA</code>s are returned for such
-    points and if it is <code>2</code>, the value at the closest data extreme
-    is used.  Use, e.g., <code>rule = 2:1</code>, if the left and right side
-    extrapolation should differ.</p></td>
-    </tr>
-    <tr>
-      <th>tail_adjust</th>
-      <td><p>Logical. If <code>TRUE</code> the procedure applies the WHO
-method for tail adjustment under the LMS distribution. We do not recommend
-this. The default is <code>FALSE</code>.</p></td>
-    </tr>
-    <tr>
-      <th>scale</th>
-      <td><p>The maximum of the scale. The default (<code>100</code>) returns for
-percentiles. Set <code>scale = 1</code> to obtain probabilities.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Not used.</p></td>
+      <td><p>Number of decimals for the result.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A vector with <code><a href='https://rdrr.io/r/base/length.html'>length(p)</a></code> elements containing the measurements.</p>
-    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
-
-    <p>The type of reference distribution is defined by the <code>distribution</code> field
-of the <code>study</code> attribute in the reference. The function executes
-transformations specified by the <code>tx</code> field (before calculation of <code>y</code>) and
-the <code>yt</code> field (after calculating of <code>y</code>), so that the <code>y</code> have the original
-units even if the reference is based on some transform of <code>y</code>.</p>
-<p>Functions <code>p2y()</code> and <code><a href='y2p.html'>y2p()</a></code> functions are the inverse of each other.</p>
+    <p>Numeric vector or <code>NULL</code></p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Stef van Buuren, 2021</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Obtain the 10th, 50th and 90th height centile for a boy aged 1 yr on WHO</span>
-<span class='fu'>p2y</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>10</span>, <span class='fl'>50</span>, <span class='fl'>90</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>3</span><span class='op'>)</span>, <span class='st'>"who_2006_hgt_male_"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] 72.703 75.749 78.794</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='fu'>make_agegrid</span><span class='op'>(</span><span class='st'>"classic"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 0.0000 0.0192 0.0383 0.0575 0.0767 0.0958</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
