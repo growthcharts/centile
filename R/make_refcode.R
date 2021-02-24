@@ -18,8 +18,10 @@
 #'                    age = c(0.1, 0.2, 0.15),
 #'                    sex = c("male", "female", "female"),
 #'                    ga = c(40, 27, 39))
-#' r <- make_refcode("nl", c("1997", "2012", "1997"), "hgt", data$sex, c("nl", "27", "nl"))
+#' r <- make_refcode("who", "2006", "hgt", data$sex)
+#' r
 #' head(load_reference(r))
+#' head(load_reference(r, "study"))
 #' head(load_reference(r[2]))
 #' head(load_reference(r[2], "study"))
 #' @export
