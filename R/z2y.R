@@ -59,7 +59,7 @@ z2y <- function(z, x, refcode, pkg = "centile", verbose = FALSE,
   }
 
   # alternatively, split calculations by refcode
-  data.frame(z = z, x = x, refcode = refcode) %>%
+  y <- data.frame(z = z, x = x, refcode = refcode) %>%
     group_by(.data$refcode) %>%
     mutate(y = y_grp(
       z = .data$z,
@@ -71,8 +71,9 @@ z2y <- function(z, x, refcode, pkg = "centile", verbose = FALSE,
       tail_adjust = tail_adjust
     )) %>%
     ungroup() %>%
-    pull(.data$y) %>%
-    round(digits = dec)
+    pull(.data$y)
+
+  round(y, digits = dec)
 }
 
 y_grp <- function(z, x, refcode, pkg, verbose, rule, tail_adjust = FALSE) {
