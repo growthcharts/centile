@@ -1,3 +1,7 @@
+# centile 0.8.1
+
+* Rounds vectors `y` and `z` explicitly
+
 # centile 0.8.0
 
 * Adds `make_agegrid()` to calculate age grids
