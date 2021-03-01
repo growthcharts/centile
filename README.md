@@ -13,10 +13,13 @@ status](https://www.r-pkg.org/badges/version/centile)](https://CRAN.R-project.or
 
 The `centile` package
 
--   Defines a simple text format for exchanging reference tables;
--   ProvideS tools for reading and validating reference tables;
--   Converts measurements to Z-scores, centiles, and vice versa;
--   Validates, names and loads references as `R` objects.
+-   Defines the reference interchange format (RIF), a simple text format
+    for exchanging growth references;
+-   Provides tools for reading and validating RIF files;
+-   Names and loads references as `R` objects;
+-   Converts between measurements, Z-scores and centiles;
+-   Contains built-in WHO Multicentre Growth Standard for height,
+    weight, head circumference and body mass index.
 
 The currently supported distributions are normal (`NO`), Lambda-Mu-Sigma
 (`LMS`), Box-Cox Green Cole (`BCCG`), Box-Cox Power Exponential (`BCPE`)
@@ -29,3 +32,5 @@ You can install the development version of `centile` with:
 ``` r
 remotes::install_github("growthcharts/centile")
 ```
+
+## Examples

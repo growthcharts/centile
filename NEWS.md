@@ -1,3 +1,8 @@
+# centile 0.9.0
+
+* Adds `refcodes` to `sysdata.rda`
+* Removes superfluous `R/data.R`
+
 # centile 0.8.1
 
 * Rounds vectors `y` and `z` explicitly

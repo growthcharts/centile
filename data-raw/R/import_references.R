@@ -2,20 +2,20 @@
 path <- file.path("data-raw/data")
 libs <- "who"
 
+refcodes <- character(0)
 for (lib in libs) {
-  files <- list.files(file.path(path, libs))
-  refcodes <- rep("", length(files))
-  names(refcodes) <- files
+  files <- list.files(file.path(path, lib))
   for (file in files) {
     ref <- centile::import_rif(file.path(path, lib, file))
     s <- attr(ref, "study")
     refcode <- centile::make_refcode(s["name"], s["year"], s["yname"], s["sex"], s["sub"])
+    refcodes <- c(refcodes, refcode)
     assign(refcode, ref)
-    refcodes[file] <- refcode
   }
 }
 
 usethis::use_data(
+  refcodes,
   who_2006_bmi_female_,
   who_2006_bmi_male_,
   who_2007_hdc_female_,
