@@ -36,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">centile</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.0</span>
       </span>
     </div>
 
@@ -96,10 +96,11 @@
 
 <p>The <code>centile</code> package</p>
 <ul>
-<li>Defines a simple text format for exchanging reference tables;</li>
-<li>ProvideS tools for reading and validating reference tables;</li>
-<li>Converts measurements to Z-scores, centiles, and vice versa;</li>
-<li>Validates, names and loads references as <code>R</code> objects.</li>
+<li>Defines the reference interchange format (RIF), a simple text format for exchanging growth references;</li>
+<li>Provides tools for reading and validating RIF files;</li>
+<li>Names and loads references as <code>R</code> objects;</li>
+<li>Converts between measurements, Z-scores and centiles;</li>
+<li>Contains built-in WHO Multicentre Growth Standard for height, weight, head circumference and body mass index.</li>
 </ul>
 <p>The currently supported distributions are normal (<code>NO</code>), Lambda-Mu-Sigma (<code>LMS</code>), Box-Cox Green Cole (<code>BCCG</code>), Box-Cox Power Exponential (<code>BCPE</code>) and Box-Cox t (<code>BCT</code>).</p>
 <div id="installation" class="section level2">
@@ -108,6 +109,10 @@
 <p>You can install the development version of <code>centile</code> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"growthcharts/centile"</span><span class="op">)</span></code></pre></div>
+</div>
+<div id="examples" class="section level2">
+<h2 class="hasAnchor">
+<a href="#examples" class="anchor"></a>Examples</h2>
 </div>
 </div>
   </div>
