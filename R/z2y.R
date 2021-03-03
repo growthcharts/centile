@@ -33,6 +33,10 @@
 #' @export
 z2y <- function(z, x, refcode, pkg = "centile", verbose = FALSE,
                 dec = 3L, rule = 1L, tail_adjust = FALSE, ...) {
+  if (is.null(refcode)) {
+    return(rep(NA_real_, length(z)))
+  }
+
   if (length(z) != length(x) && length(x) > 1L) {
     message("z2y(): Non-conformable arguments z and x")
     return(rep(NA_real_, length(z)))

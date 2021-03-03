@@ -17,7 +17,7 @@
 #' @param refcode A character vector with `length(y)` elements, each of which
 #' is the name of a reference. Scalar `refcode` expands to `length(y)`.
 #' Alternatively, `refcode` may be an object of class `reference`, typically
-#' produced by [import_rif()].
+#' produced by [import_rif()]. If `NULL` the procedure returns `NA`'s.
 #' @param pkg The package containing the references in the `R/sysdata.dta` object.
 #' The package needs to be loaded. The default `pkg = "centile"` searches in
 #' the `centile` package.
@@ -47,6 +47,10 @@
 #' @export
 y2z <- function(y, x, refcode, pkg = "centile", verbose = FALSE,
                 dec = 3L, rule = 1L, tail_adjust = FALSE, ...) {
+  if (is.null(refcode)) {
+    return(rep(NA_real_, length(y)))
+  }
+
   if (length(y) != length(x) && length(x) > 1L) {
     message("y2z(): Non-conformable arguments y and x")
     return(rep(NA_real_, length(y)))

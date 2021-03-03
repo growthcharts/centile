@@ -27,7 +27,7 @@ expanded to \code{length(y)}.}
 \item{refcode}{A character vector with \code{length(y)} elements, each of which
 is the name of a reference. Scalar \code{refcode} expands to \code{length(y)}.
 Alternatively, \code{refcode} may be an object of class \code{reference}, typically
-produced by \code{\link[=import_rif]{import_rif()}}.}
+produced by \code{\link[=import_rif]{import_rif()}}. If \code{NULL} the procedure returns \code{NA}'s.}
 
 \item{pkg}{The package containing the references in the \code{R/sysdata.dta} object.
 The package needs to be loaded. The default \code{pkg = "centile"} searches in
