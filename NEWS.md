@@ -1,3 +1,7 @@
+# centile 0.10.0
+
+* Returns `NA` for `NULL` `refcode`
+
 # centile 0.9.0
 
 * Adds `refcodes` to `sysdata.rda`
