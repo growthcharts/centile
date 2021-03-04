@@ -32,7 +32,7 @@ load_reference <- function(refcode = NULL,
                            element = c("all", "table", "index", "study"),
                            pkg = "centile",
                            verbose = FALSE) {
-  if (is.null(refcode)) {
+  if (!length(refcode)) {
     return(NULL)
   }
 
