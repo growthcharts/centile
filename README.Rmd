@@ -18,6 +18,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![CRAN status](https://www.r-pkg.org/badges/version/centile)](https://CRAN.R-project.org/package=centile)
+[![R-CMD-check](https://github.com/growthcharts/centile/workflows/R-CMD-check/badge.svg)](https://github.com/growthcharts/centile/actions)
 <!-- badges: end -->
 
 The `centile` package
