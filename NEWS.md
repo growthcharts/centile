@@ -1,6 +1,9 @@
 # centile 0.11.0
 
+* Switches on continuous integration
+* Adds Github action `pkgdown`
 * Adds Github action `R-CMD-check`
+* Removes `docs` folder in favour of github-pages branch
 
 # centile 0.10.0
 
