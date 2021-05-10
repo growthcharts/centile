@@ -1,3 +1,7 @@
+# centile 0.11.0
+
+* Adds Github action `R-CMD-check`
+
 # centile 0.10.0
 
 * Returns `NA` for `NULL` `refcode`
