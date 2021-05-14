@@ -59,6 +59,7 @@ jobs:
       - name: Install system dependencies
         if: runner.os == 'Linux'
         run: |
+          remotes::install_cran("readr")
           while read -r cmd
           do
             eval sudo $cmd
