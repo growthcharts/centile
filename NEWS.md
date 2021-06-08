@@ -1,3 +1,7 @@
+# centile 0.12.0
+
+* Make dependent on `readr 1.9.9` in order to evade GHA error `/lib/x86_64-linux-gnu/libm.so.6: version 'GLIBC_2.29' not found (required by /home/runner/work/_temp/Library/readr/libs/readr.so)`
+
 # centile 0.11.0
 
 * Switches on continuous integration
