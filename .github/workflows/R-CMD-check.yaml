@@ -65,12 +65,16 @@ jobs:
             eval sudo $cmd
           done < <(Rscript -e 'writeLines(remotes::system_requirements("ubuntu", "20.04"))')
 
+      - name: Install dependencies for systemfonts and textshaping
+      if: runner.os == 'Linux'
+        run: |
+          eval sudo apt-get install libharfbuzz-dev libfribidi-dev
+
       - name: Install dependencies
         run: |
           remotes::install_cran("readr")
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("rcmdcheck")
-          remotes::install_cran("textshaping")
         shell: Rscript {0}
 
       - name: Check
