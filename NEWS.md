@@ -1,3 +1,7 @@
+# centile 0.13.0
+
+* Adds `renv` package management
+
 # centile 0.12.1
 
 * Revert back to `readr 1.4.0` from CRAN
