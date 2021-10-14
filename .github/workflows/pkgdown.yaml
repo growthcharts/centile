@@ -33,9 +33,10 @@ jobs:
           restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
 
       - name: Install dependencies for systemfonts and textshaping
-      if: runner.os == 'Linux'
+        if: runner.os == 'Linux'
         run: |
-          eval sudo apt-get install libharfbuzz-dev libfribidi-dev
+          eval sudo apt-get install -y libharfbuzz-dev
+          eval sudo apt-get install -y libfribidi-dev
 
       - name: Install dependencies
         run: |
