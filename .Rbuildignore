@@ -1,3 +1,5 @@
+^renv$
+^renv\.lock$
 ^centile\.Rproj$
 ^\.Rproj\.user$
 ^LICENSE\.md$
