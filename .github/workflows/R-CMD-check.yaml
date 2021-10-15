@@ -53,7 +53,7 @@ jobs:
             ${{ runner.os }}-renv-
 
       - uses: actions/cache@v2
-        if: startsWith(runner.os, 'Windows'
+        if: startsWith(runner.os, 'Windows')
         with:
           path: ~\AppData\Local\renv
           key: ${{ runner.os }}-renv-${{ hashFiles('**/renv.lock') }}
