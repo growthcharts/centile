@@ -1,3 +1,7 @@
+# centile 0.13.1
+
+* Update `renv` packages to R 4.2.1
+
 # centile 0.13.0
 
 * Adds `renv` package management
