@@ -1,8 +1,8 @@
 pandoc: 2.7.3
-pkgdown: 1.6.1
+pkgdown: 2.0.6
 pkgdown_sha: ~
 articles:
-  articles/compact: compact.html
-  articles/rif: rif.html
-last_built: 2021-10-15T08:12Z
+  compact: compact.html
+  rif: rif.html
+last_built: 2022-09-13T18:19Z
 

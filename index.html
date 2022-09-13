@@ -24,6 +24,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -36,33 +38,27 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">centile</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.13.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.13.2</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/articles/compact.html">Compact WHO growth standard</a>
+      <a href="articles/compact.html">Compact WHO growth standard</a>
     </li>
     <li>
-      <a href="articles/articles/rif.html">Reference Interchange Format (RIF)</a>
+      <a href="articles/rif.html">Reference Interchange Format (RIF)</a>
     </li>
   </ul>
 </li>
@@ -72,7 +68,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/growthcharts/centile/">
+  <a href="https://github.com/growthcharts/centile/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -89,11 +85,10 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="centile" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#centile" class="anchor"></a>centile</h1></div>
+<div class="section level1">
+<div class="page-header"><h1 id="centile">centile<a class="anchor" aria-label="anchor" href="#centile"></a>
+</h1></div>
 <!-- badges: start -->
-
 <p>The <code>centile</code> package</p>
 <ul>
 <li>Defines the reference interchange format (RIF), a simple text format for exchanging growth references;</li>
@@ -103,67 +98,78 @@
 <li>Contains built-in WHO Multicentre Growth Standard for height, weight, head circumference and body mass index.</li>
 </ul>
 <p>The currently supported distributions are normal (<code>NO</code>), Lambda-Mu-Sigma (<code>LMS</code>), Box-Cox Green Cole (<code>BCCG</code>), Box-Cox Power Exponential (<code>BCPE</code>) and Box-Cox t (<code>BCT</code>).</p>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
 <p>You can install the development version of <code>centile</code> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"growthcharts/centile"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"growthcharts/centile"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="examples" class="section level2">
-<h2 class="hasAnchor">
-<a href="#examples" class="anchor"></a>Examples</h2>
-</div>
+<div class="section level2"><h2 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
+</h2></div>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Browse source code at <br><a href="https://github.com/growthcharts/centile/">https://​github.com/​growthcharts/​centile/​</a>
-</li>
+<li><a href="https://github.com/growthcharts/centile/" class="external-link">Browse source code</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
 <li><small>AGPL (&gt;= 3) + file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
+
 <div class="community">
-<h2>Community</h2>
+<h2 data-toc-skip>Community</h2>
 <ul class="list-unstyled">
 <li><a href="CONTRIBUTING.html">Contributing guide</a></li>
 <li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
-</ul>
-</div>
-<div class="developers">
-<h2>Developers</h2>
-<ul class="list-unstyled">
-<li>Stef van Buuren <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0003-1098-2119" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li><a href="SUPPORT.html">Getting help</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li><a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
-<li><a href="https://CRAN.R-project.org/package=centile"><img src="https://www.r-pkg.org/badges/version/centile" alt="CRAN status"></a></li>
-<li><a href="https://github.com/growthcharts/centile/actions"><img src="https://github.com/growthcharts/centile/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="authors.html#citation">Citing centile</a></li>
 </ul>
 </div>
+
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
+<ul class="list-unstyled">
+<li>Stef van Buuren <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0003-1098-2119" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+</ul>
 </div>
+
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://www.tidyverse.org/lifecycle/#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
+<li><a href="https://CRAN.R-project.org/package=centile" class="external-link"><img src="https://www.r-pkg.org/badges/version/centile" alt="CRAN status"></a></li>
+<li><a href="https://github.com/growthcharts/centile/actions" class="external-link"><img src="https://github.com/growthcharts/centile/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+</ul>
+</div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Stef van Buuren.</p>
+  <p></p>
+<p>Developed by Stef van Buuren.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>
@@ -171,6 +177,8 @@
 
   
 
+
+  
 
   </body>
 </html>
