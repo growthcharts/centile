@@ -1,17 +1,11 @@
-# centile 0.13.2
+# centile 0.14.0
 
-* Remove `renv`
-
-# centile 0.13.1
-
-* Update `renv` packages to R 4.2.1
+* Adds the `BCT` distribution to the validation code
+* Removes `renv`
 
 # centile 0.13.0
 
 * Adds `renv` package management
-
-# centile 0.12.1
-
 * Revert back to `readr 1.4.0` from CRAN
 
 # centile 0.12.0
@@ -33,9 +27,6 @@
 
 * Adds `refcodes` to `sysdata.rda`
 * Removes superfluous `R/data.R`
-
-# centile 0.8.1
-
 * Rounds vectors `y` and `z` explicitly
 
 # centile 0.8.0
@@ -47,9 +38,6 @@
 # centile 0.7.0 
 
 * Adds specification of RIF format in vignette
-
-# centile 0.6.1
-
 * Improves documentation for WHO standard
 * Tweak examples so as to use only internal data
 * Introduce informal S3 class `reference`
@@ -62,9 +50,6 @@
 * Renames `y()` and `z()` to `z2y()` and `y2z()`
 * Introduces `y2p()` and `p2y()`
 * Renames `read_ref()` to `import_rif()`
-
-# yzy 0.5.1
-
 * Allow for scalar `x` and `refcode` arguments in `z()` and `y()`
 
 # yzy 0.5.0
