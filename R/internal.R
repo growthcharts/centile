@@ -4,6 +4,7 @@ validate_distribution <- function(names, dist) {
          NO = all(c("mean", "sd") %in% names),
          LMS = all(c("L", "M", "S") %in% names),
          BCCG = all(c("mu", "sigma", "nu") %in% names),
+         BCT = all(c("mu", "sigma", "nu", "tau") %in% names),
          BCPE = all(c("mu", "sigma", "nu", "tau") %in% names),
          MP = any(substr(names, 1L, 1L) == "p") && "mean" %in% names,
          MEA = !any(substr(names, 1L, 1L) == "p") && "mean" %in% names,

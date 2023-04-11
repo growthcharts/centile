@@ -46,7 +46,7 @@ import_rif <- function(file) {
   pos <- which("x" %in% tolower(names(data)))
   if (!pos) stop("Variable 'x' not found.")
   ok <- validate_distribution(names(data)[-pos], study["distribution"])
-  if (!ok) stop("Variable names for distribution ", study$key["distribution"], " not found.")
+  if (!ok) stop("Variable names for distribution ", study["distribution"], " not found.")
 
   # save
   attr(data, "study") <- study
