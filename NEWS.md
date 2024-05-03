@@ -1,3 +1,7 @@
+# centile 0.14.2
+
+* Sets `RoxygenNote` to 7.3.1
+
 # centile 0.14.1
 
 * Replaces `BCT()` by robust internal `pBCT()` and `qBCT()`
