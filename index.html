@@ -19,7 +19,7 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
-    
+
 
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">centile</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.14.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.15.0</span>
       </span>
     </div>
 
@@ -45,7 +45,7 @@
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
-     
+
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
@@ -65,7 +65,7 @@
 <li>
   <a href="https://github.com/growthcharts/centile/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
-     
+
   </a>
 </li>
       </ul>
@@ -76,7 +76,7 @@
 </div>
 <!--/.navbar -->
 
-      
+
 
       </header><div class="row">
   <div class="contents col-md-9">
@@ -104,6 +104,28 @@
 <div class="section level2">
 <h2 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
 </h2>
+<p>Generate a reference table for the WHO Multicentre Growth Standard for weight of boys aged 0-5 years:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/growthcharts/centile" class="external-link">centile</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/calculate_centile_table.html">calculate_centile_table</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">5</span>, z <span class="op">=</span> <span class="op">-</span><span class="fl">2</span><span class="op">:</span><span class="fl">2</span>, refcode <span class="op">=</span> <span class="st">"who_2006_wgt_male_"</span><span class="op">)</span></span>
+<span><span class="co">#&gt;        Z-2   Z-1    Z0    Z1    Z2</span></span>
+<span><span class="co">#&gt; [1,]  2.46  2.88  3.35  3.86  4.42</span></span>
+<span><span class="co">#&gt; [2,]  7.74  8.65  9.65 10.76 11.99</span></span>
+<span><span class="co">#&gt; [3,]  9.67 10.84 12.15 13.62 15.28</span></span>
+<span><span class="co">#&gt; [4,] 11.28 12.71 14.34 16.20 18.31</span></span>
+<span><span class="co">#&gt; [5,] 12.71 14.40 16.35 18.59 21.18</span></span>
+<span><span class="co">#&gt; [6,] 14.07 16.04 18.34 21.02 24.16</span></span></code></pre></div>
+<p>We obtain percentiles as follows:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/growthcharts/centile" class="external-link">centile</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/calculate_centile_table.html">calculate_centile_table</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">5</span>, p <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">50</span>, <span class="fl">90</span><span class="op">)</span>, refcode <span class="op">=</span> <span class="st">"who_2006_wgt_male_"</span><span class="op">)</span></span>
+<span><span class="co">#&gt;        P10   P50   P90</span></span>
+<span><span class="co">#&gt; [1,]  2.76  3.35  4.01</span></span>
+<span><span class="co">#&gt; [2,]  8.38  9.65 11.09</span></span>
+<span><span class="co">#&gt; [3,] 10.50 12.15 14.07</span></span>
+<span><span class="co">#&gt; [4,] 12.29 14.34 16.77</span></span>
+<span><span class="co">#&gt; [5,] 13.90 16.35 19.28</span></span>
+<span><span class="co">#&gt; [6,] 15.45 18.34 21.86</span></span></code></pre></div>
 </div>
 </div>
   </div>
@@ -167,16 +189,16 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
       </footer>
 </div>
 
-  
 
 
-  
+
+
 
   </body>
 </html>

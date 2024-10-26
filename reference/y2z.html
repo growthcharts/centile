@@ -4,7 +4,7 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]--></head><body data-spy="scroll" data-target="#toc">
-    
+
 
     <div class="container template-reference-topic">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -18,7 +18,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">centile</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.14.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.15.0</span>
       </span>
     </div>
 
@@ -29,7 +29,7 @@
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
-     
+
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu"><li>
@@ -45,20 +45,20 @@
       </ul><ul class="nav navbar-nav navbar-right"><li>
   <a href="https://github.com/growthcharts/centile/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
-     
+
   </a>
 </li>
       </ul></div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-      
+
 
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Convert measurements into Z-scores</h1>
-    <small class="dont-index">Source: <a href="https://github.com/growthcharts/centile/blob/HEAD/R/y2z.R" class="external-link"><code>R/y2z.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/growthcharts/centile/blob/master/R/y2z.R" class="external-link"><code>R/y2z.R</code></a></small>
     <div class="hidden name"><code>y2z.Rd</code></div>
     </div>
 
@@ -83,39 +83,41 @@
 
     <div id="arguments">
     <h2>Arguments</h2>
-    <dl><dt>y</dt>
+
+
+<dl><dt id="arg-y">y<a class="anchor" aria-label="anchor" href="#arg-y"></a></dt>
 <dd><p>A numerical vector with measurements`.</p></dd>
 
 
-<dt>x</dt>
+<dt id="arg-x">x<a class="anchor" aria-label="anchor" href="#arg-x"></a></dt>
 <dd><p>A vector containing <code>length(y)</code> values of the numerical covariate (typically
 decimal age or height) at which conversion is desired. A scalar <code>x</code> will be
 expanded to <code>length(y)</code>.</p></dd>
 
 
-<dt>refcode</dt>
+<dt id="arg-refcode">refcode<a class="anchor" aria-label="anchor" href="#arg-refcode"></a></dt>
 <dd><p>A character vector with <code>length(y)</code> elements, each of which
 is the name of a reference. Scalar <code>refcode</code> expands to <code>length(y)</code>.
 Alternatively, <code>refcode</code> may be an object of class <code>reference</code>, typically
 produced by <code><a href="import_rif.html">import_rif()</a></code>. If <code>NULL</code> the procedure returns <code>NA</code>'s.</p></dd>
 
 
-<dt>pkg</dt>
+<dt id="arg-pkg">pkg<a class="anchor" aria-label="anchor" href="#arg-pkg"></a></dt>
 <dd><p>The package containing the references in the <code>R/sysdata.dta</code> object.
 The package needs to be loaded. The default <code>pkg = "centile"</code> searches in
 the <code>centile</code> package.</p></dd>
 
 
-<dt>verbose</dt>
+<dt id="arg-verbose">verbose<a class="anchor" aria-label="anchor" href="#arg-verbose"></a></dt>
 <dd><p>Set to <code>TRUE</code> to turn on warnings</p></dd>
 
 
-<dt>dec</dt>
+<dt id="arg-dec">dec<a class="anchor" aria-label="anchor" href="#arg-dec"></a></dt>
 <dd><p>A scalar value indicating the number of decimals used to round the
 value. The default is 3 decimals.</p></dd>
 
 
-<dt>rule</dt>
+<dt id="arg-rule">rule<a class="anchor" aria-label="anchor" href="#arg-rule"></a></dt>
 <dd><p>an integer (of length 1 or 2) describing how interpolation
     is to take place outside the interval [<code>min(x)</code>, <code>max(x)</code>].
     If <code>rule</code> is <code>1</code> then <code>NA</code>s are returned for such
@@ -124,21 +126,19 @@ value. The default is 3 decimals.</p></dd>
     extrapolation should differ.</p></dd>
 
 
-<dt>tail_adjust</dt>
+<dt id="arg-tail-adjust">tail_adjust<a class="anchor" aria-label="anchor" href="#arg-tail-adjust"></a></dt>
 <dd><p>Logical. If <code>TRUE</code> the procedure applies the WHO
 method for tail adjustment under the LMS distribution. We do not recommend
 this. The default is <code>FALSE</code>.</p></dd>
 
 
-<dt>...</dt>
+<dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
 <dd><p>Not used.</p></dd>
 
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    
-
-<p>A vector with <code>length(y)</code> elements containing the Z-scores.</p>
+    <p>A vector with <code>length(y)</code> elements containing the Z-scores.</p>
     </div>
     <div id="note">
     <h2>Note</h2>
@@ -194,15 +194,15 @@ Z-score.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
       </footer></div>
 
-  
 
 
-  
+
+
 
   </body></html>
 
