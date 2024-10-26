@@ -43,5 +43,20 @@ remotes::install_github("growthcharts/centile")
 
 ## Examples
 
+Generate a reference table for the WHO Multicentre Growth Standard for weight of boys aged 0-5 years:
+
+```{r}
+library(centile)
+calculate_centile_table(x = 0:5, z = -2:2, refcode = "who_2006_wgt_male_")
+```
+
+We obtain percentiles as follows:
+
+```{r}
+library(centile)
+calculate_centile_table(x = 0:5, p = c(10, 50, 90), refcode = "who_2006_wgt_male_")
+```
+
+
 
 
