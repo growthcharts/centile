@@ -1,3 +1,7 @@
+# centile 0.15.0
+
+* Adds `calculate_centile_table()` for generating a table of centiles from a reference
+
 # centile 0.14.2
 
 * Sets `RoxygenNote` to 7.3.1
